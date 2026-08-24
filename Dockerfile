@@ -20,7 +20,7 @@ RUN npm install --legacy-peer-deps --ignore-scripts
 COPY Frontend/package*.json ./Frontend/
 
 # Install frontend dependencies
-RUN cd frontend && npm install --legacy-peer-deps
+RUN cd Frontend && npm install --legacy-peer-deps
 
 # Copy the rest of the application files
 COPY . .
