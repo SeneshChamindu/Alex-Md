@@ -1546,7 +1546,7 @@ END:VCARD`
                 `*│* 👤 *User:* ${userMention}\n` +
                 `*│* ⚡ *Prefix:* \`${prefixUsed}\`\n` +
                 `*│* 🤖 *Engine:* _${botName}_\n` +
-                `*│* 💖 *Developer:* _CHAMA OFC_\n` +
+                `*│* 💖 *Developer:* _SENE OFC 🥷_\n` +
                 `*╰─────────────────────────────*\n\n` +
 
                 `*╭───〔 🎬 MOVIE & TV SERIES ENGINE 〕───*\n` +
