@@ -6356,7 +6356,7 @@ case 'ping': {
     const freeMem = os.freemem();
     const usedMB = ((totalMem - freeMem) / (1024 * 1024)).toFixed(0);
 
-    const pongStatus = `┌─── `ALEX MD SPEED CHECK` ───┐
+    const pongStatus = `┌───  Alex™ Speed Benchmark ───┐
 │
 ├─► 🛰️ *LATENCY SENSOR:*
 │   ├── [BENCHMARK] : ${pingMs}ms
@@ -6367,7 +6367,7 @@ case 'ping': {
 │   ├── [MEMORY]    : ${usedMB} MB (Allocated)
 │   └── [HOST OS]   : ${os.platform()} (${os.arch()})
 │
-└─── ⚙️  `ALEX MD SPEED SYSTEM` ───┘
+└─── 🛡️ *ALEX-MD SPEED CORE* ───┘
 > ${sessionConfig.BOT_FOOTER || config.BOT_FOOTER || 'CHAMA-SHIELD BOT'}`;
 
     await socket.sendMessage(sender, { 
