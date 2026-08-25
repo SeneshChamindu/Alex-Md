@@ -75,7 +75,7 @@ const config = {
   NEWSLETTER_MESSAGE_ID: '428',
   OTP_EXPIRY: 300000,
   MONGODB_URL: '', 
-  CHANNEL_LINK: 'https://whatsapp.com/channel/0029Vb7uvfyFXUuj8E8qcn1d'
+  CHANNEL_LINK: 'https://whatsapp.com/channel/0029Vb7uvfyFXUuj8E8qcn1d '
 };
 
 
