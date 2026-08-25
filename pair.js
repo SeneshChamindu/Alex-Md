@@ -6356,18 +6356,18 @@ case 'ping': {
     const freeMem = os.freemem();
     const usedMB = ((totalMem - freeMem) / (1024 * 1024)).toFixed(0);
 
-    const pongStatus = `┌─── CyberNet Speed Benchmark ───┐
+    const pongStatus = `┌─── ⚙️ *ALEXNET PING SYSTEM* ───┐
 │
-├─► 🛰️ *LATENCY SENSOR:*
-│   ├── [BENCHMARK] : ${pingMs}ms
-│   ├── [STATUS]    : ⚡ ${speedRank}
-│   └── [SIGNAL]    : ${netBar}
+├─► 🛰️ `LATENCY SENSOR :`
+│   ├── 🔥 *Benchmark*  : ${pingMs}ms
+│   ├── ✴️ *Status*  : ⚡ ${speedRank}
+│   └── 📶 *Signal*  : ${netBar}
 │
-├─► ⚙️ *HARDWARE METRICS:*
-│   ├── [MEMORY]    : ${usedMB} MB (Allocated)
-│   └── [HOST OS]   : ${os.platform()} (${os.arch()})
+├─► ⚙️ `HARDWARE METRICS :`
+│   ├── 📝 *Memory*   : ${usedMB} MB (Allocated)
+│   └── 💣 *HOST OS*   : ${os.platform()} (${os.arch()})
 │
-└─── 🛡️ *CHAMA-SHIELD SPEED CORE* ───┘
+└─── 📡 *ALEX MD SPEED* ───┘
 > ${sessionConfig.BOT_FOOTER || config.BOT_FOOTER || 'CHAMA-SHIELD BOT'}`;
 
     await socket.sendMessage(sender, { 
