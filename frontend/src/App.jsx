@@ -1232,3 +1232,6 @@ export default function App() {
     </div>
   );
 }
+<footer className="footer">
+  © 2026 Owner — Senesh Chamindu
+</footer>
