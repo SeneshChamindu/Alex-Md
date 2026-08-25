@@ -6359,16 +6359,16 @@ case 'ping': {
     const pongStatus = `┌───  Alex™ Speed Benchmark ───┐
 │
 ├─► 🛰️ *LATENCY SENSOR:*
-│   ├── [BENCHMARK] : ${pingMs}ms
-│   ├── [STATUS]    : ⚡ ${speedRank}
-│   └── [SIGNAL]    : ${netBar}
+│   ├── [ BENCHMARK ] : ${pingMs}ms
+│   ├── [ STATUS ]    : ⚡ ${speedRank}
+│   └── [ SIGNAL ]    : ${netBar}
 │
 ├─► ⚙️ *HARDWARE METRICS:*
-│   ├── [MEMORY]    : ${usedMB} MB (Allocated)
-│   └── [HOST OS]   : ${os.platform()} (${os.arch()})
+│   ├── [ MEMORY ]    : ${usedMB} MB 
+│   └── [ HOST OS ]   : ${os.platform()} (${os.arch()})
 │
 └─── 🛡️ *ALEX-MD SPEED CORE* ───┘
-> ${sessionConfig.BOT_FOOTER || config.BOT_FOOTER || 'CHAMA-SHIELD BOT'}`;
+> ${sessionConfig.BOT_FOOTER || config.BOT_FOOTER || '🗽 𝐀𝐥𝐞𝐱 𝐌𝐝 𝐎𝐟𝐟𝐢𝐜𝐢𝐚𝐥 𓃵'}`;
 
     await socket.sendMessage(sender, { 
         text: pongStatus
