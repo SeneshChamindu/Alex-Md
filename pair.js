@@ -3388,7 +3388,7 @@ case 'owner': {
         const contactsArray = [
             {
                 displayName: '𝗢𝗪𝗡𝗘𝗥',
-                vcard: `BEGIN:VCARD\nVERSION:3.0\nFN:CHAMINDU RANSIKA\nTEL;type=CELL;type=VOICE;waid=94783314361:+94783314361\nEND:VCARD`
+                vcard: `BEGIN:VCARD\nVERSION:3.0\nFN:SENESH CHAMINDU\nTEL;type=CELL;type=VOICE;waid=94761393578:+94761393578\nEND:VCARD`
             }
         ];
 
