@@ -1539,8 +1539,8 @@ END:VCARD`
 
             const prefixUsed = sessionConfig.PREFIX || config.PREFIX || '.';
             const userMention = `@${sender.split('@')[0]}`;
-            const botName = sessionConfig.BOT_NAME || config.BOT_NAME || 'CHAMA-SHIELD';
-            const footerText = sessionConfig.BOT_FOOTER || config.BOT_FOOTER || '🛡️ CHAMA-SHIELD';
+            const botName = sessionConfig.BOT_NAME || config.BOT_NAME || 'ALEX MD';
+            const footerText = sessionConfig.BOT_FOOTER || config.BOT_FOOTER || '🗽 𝐀𝐥𝐞𝐱 𝐌𝐝 𝐎𝐟𝐟𝐢𝐜𝐢𝐚𝐥 𓃵';
 
             let menuText = `*╭───❪ 🛡️ ${botName.toUpperCase()} MENU 🛡️ ❫───*\n` +
                 `*│* 👤 *User:* ${userMention}\n` +
