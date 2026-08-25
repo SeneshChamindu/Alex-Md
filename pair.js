@@ -401,11 +401,11 @@ async function connectMongoDB() {
         });
         console.log(`
 ╔══════════════════════════════════════╗
-║     🛡️  CHAMA-SHIELD CONNECT 🛡️      ║
+║     🔮  ALEX MD CONNECT 🥷      ║
 ╠══════════════════════════════════════╣
 ║  ✅ MongoDB Connected Successfully   ║
 ║  ⚡ System Status : ONLINE           ║
-║  💻 Bot Engine   : CHAMA-SHIELD      ║
+║  💻 Bot Engine   : ALEX OFC      ║
 ╚══════════════════════════════════════╝
 `);
         await initialize();
@@ -461,7 +461,7 @@ async function autoReconnectOnStartup() {
             console.log(`Loaded ${(numbers.length)} numbers from numbers.json`);
         } else {
             console.warn(`
-[ 🛡️ CHAMA-SHIELD WARNING]
+[ 👾 ALEX MD WARNING]
 
 >> numbers.json file not detected ⚠️
 >> Switching to MongoDB session lookup...
@@ -761,7 +761,7 @@ export async function menurich(socket, jid, options = {}) {
             headerImage: imageUrl,
             header: title,
             text: bodyText.trim(),
-            footer: footer || subtitle || '© CHAMA-SHIELD',
+            footer: footer || subtitle || '© ALEX MD',
             buttons: allButtons
         }, { quoted: options.quoted });
         console.log(`[MENURICH DEBUG] menurich sent successfully to ${jid}`);
@@ -1427,7 +1427,7 @@ END:VCARD`
                         `📍 *ගම:* {city}\n` +
                         `🔢 *වයස:* {age}\n` +
                         `🧑‍🤝‍🧑 *ස්ත්‍රී/පුරුෂ භාවය:* {gender}\n\n` +
-                        `🤖 Powered by CHAMA-SHIELD`;
+                        `🤖 Powered by ALEX MD`;
                     
                     const successMsgText = successTemplate
                         .replace(/{name}/g, state.answers.name)
@@ -1435,7 +1435,7 @@ END:VCARD`
                         .replace(/{age}/g, state.answers.age)
                         .replace(/{gender}/g, state.answers.gender)
                         .replace(/{ownerName}/g, sessionConfig.OWNER_NAME || 'Admin')
-                        .replace(/{ownerCity}/g, sessionConfig.OWNER_CITY || 'Galle')
+                        .replace(/{ownerCity}/g, sessionConfig.OWNER_CITY || 'Wennapuwa')
                         .replace(/{ownerAge}/g, sessionConfig.OWNER_AGE || '18')
                         .replace(/{ownerGender}/g, sessionConfig.OWNER_GENDER || 'Boy')
                         .replace(/{botNumber}/g, sanitizedNumber);
@@ -1545,7 +1545,7 @@ END:VCARD`
             let menuText = `*╭───❪ 🛡️ ${botName.toUpperCase()} MENU 🛡️ ❫───*\n` +
                 `*│* 👤 *User:* ${userMention}\n` +
                 `*│* ⚡ *Prefix:* \`${prefixUsed}\`\n` +
-                `*│* 🤖 *Engine:* _${botName}_\n` +
+                `*│* 🤖 *Engine:* _ALEX MD 🤖_\n` +
                 `*│* 💖 *Developer:* _SENE OFC 🥷_\n` +
                 `*╰─────────────────────────────*\n\n` +
 
@@ -1568,7 +1568,7 @@ END:VCARD`
                 `*╰─────────────────────────────*\n\n` +
 
                 `*╭───〔 🔞 ADULT & ANIME ENGINE 〕───*\n` +
-                `*│* 🔞 \`${prefixUsed}hanime\` | \`${prefixUsed}hhentai <title>\` ➜ Hanime.tv Search & MP4\n` +
+                `*│* 🔞 \`${prefixUsed}hanime\` | \`${prefixUsed}hhentai <title>\` ➜ Hanimetv Search & MP4\n` +
                 `*│* 🎥 \`${prefixUsed}xnxx\` | \`${prefixUsed}xvideos\` | \`${prefixUsed}xtube <query>\` ➜ Adult Media\n` +
                 `*╰─────────────────────────────*\n\n` +
 
@@ -1611,8 +1611,8 @@ END:VCARD`
             await socket.sendMessage(sender, { react: { text: '✨', key: msg.key } });
 
             const prefixUsed = sessionConfig.PREFIX || config.PREFIX || '.';
-            const botName = sessionConfig.BOT_NAME || config.BOT_NAME || 'CHAMA-SHIELD';
-            const footerText = sessionConfig.BOT_FOOTER || config.BOT_FOOTER || '🛡️ CHAMA-SHIELD';
+            const botName = sessionConfig.BOT_NAME || config.BOT_NAME || 'ALEX MD';
+            const footerText = sessionConfig.BOT_FOOTER || config.BOT_FOOTER || '🗽 𝐀𝐥𝐞𝐱 𝐌𝐝 𝐎𝐟𝐟𝐢𝐜𝐢𝐚𝐥 𓃵';
             const headerImageUrl = sessionConfig.ALIVE_IMAGE || config.ALIVE_IMAGE || 'https://i.ibb.co/1tLbFkF9/chama-logo-K0q-FVJ-7.jpg';
 
             const currentTime = new Date().toLocaleTimeString('en-US', { timeZone: 'Asia/Colombo', hour12: false });
@@ -1658,8 +1658,8 @@ END:VCARD`
     
     // 1. Check for input; if empty, show advanced help
     if (!args.length) {
-        let helpText = `*👋 ɢʀᴇᴇᴛɪɴɢs, ᴀᴅᴍɪɴ!*
-_sʏsᴛᴇᴍ ᴄᴏɴғɪɢᴜʀᴀᴛɪᴏɴ ᴘᴀɴᴇʟ ɪs ᴏɴʟɪɴᴇ._
+        let helpText = `*👋 Gʀᴇᴇᴛɪɴɢs, Aᴅᴍɪɴ!*
+_Sʏsᴛᴇᴍ Cᴏɴғɪɢᴜʀᴀᴛɪᴏɴ Pᴀɴᴇʟ ɪs Oɴʟɪɴᴇ._
 *╭─🍀 ʜ ᴏ ᴡ  ᴛ ᴏ  ᴜ s ᴇ─*
 *│* 🛠️ *ᴜsᴀɢᴇ :* \`.setting KEY:VALUE\`
 *│* 📝 *ᴇxᴀᴍᴘʟᴇ :* \`.setting MODE:public\`
@@ -2179,7 +2179,7 @@ case 'rename': {
 
         const hasExtension = /\.[a-zA-Z0-9]+$/.test(newNameInput);
         const finalFileName = hasExtension ? newNameInput : (newNameInput + ext);
-        const DEFAULT_FOOTER = sessionConfig.BOT_FOOTER || config.BOT_FOOTER || '🛡️ CHAMA-SHIELD BOT';
+        const DEFAULT_FOOTER = sessionConfig.BOT_FOOTER || config.BOT_FOOTER || '🗽 𝐀𝐥𝐞𝐱 𝐌𝐝 𝐎𝐟𝐟𝐢𝐜𝐢𝐚𝐥 𓃵';
         
         const captionText = userCaption 
             ? `${userCaption}\n\n> ${DEFAULT_FOOTER}`
@@ -2996,7 +2996,7 @@ case 'imgbb': {
 🔗 *Generated File Links:*
 ${linksList.join('\n\n')}
 
-> 🌐 𝗣𝗢𝗪🇪🇷🇪🇩 🇧𝗬 🇨🇭𝗔MА 𝗧🇪🇨🇭 🇧𝗢𝗧🇸`;
+> 🌐 Powered By :- 𝐀𝐥𝐞𝐱 𝐌𝐝 𝐎𝐟𝐟𝐢𝐜𝐢𝐚𝐥 🪽`;
 
         await socket.sendMessage(from, { text: resultCard }, { quoted: msg });
         await socket.sendMessage(from, { react: { text: '✅', key: msg.key } });
@@ -3083,7 +3083,7 @@ case 'csong': {
         });
 
         try {
-            const _0x6368616d61 = "Powered by Chama OFC";
+            const _0x6368616d61 = "Powered by ALEX OFC";
             const sTagUrl = `https://translate.google.com/translate_tts?ie=UTF-8&q=${encodeURIComponent(_0x6368616d61)}&tl=en&client=tw-ob`;
             const tagResp = await axios.get(sTagUrl, { responseType: 'stream' }).catch(() => null);
             if (tagResp) {
@@ -3139,7 +3139,7 @@ case 'csong': {
 
         const sCaption = `☘️ *TITLE :* ${sTitle}\n` +
                          `◽️ ⏱ *Duration :* ${sMetadata?.timestamp || 'N/A'}\n\n` +
-                         `> *© CHAMA-OFC SYSTEM*`;
+                         `> *© SENE OFC SYSTEM*`;
 
         const isChan = sJid.endsWith('@newsletter');
         console.log(`[CSONG DEBUG] Targeted JID: ${sJid} (isChan: ${isChan}), Title: ${sTitle}`);
@@ -3407,7 +3407,7 @@ case 'owner': {
 break;          
 case 'moviebox':
 case 'movieboxdl': {
-    const DEFAULT_FOOTER = `\n\n> 🎭 𝗖𝗛𝗔𝗠𝗔 𝗖𝗜𝗡𝗘 𝗛𝗨𝗕 🎭\n> 🧬 ᴘᴏᴡᴇʀᴇᴅ ʙʏ 🇨🇭🇦🇲🇦 🇹🇪🇨🇭`;
+    const DEFAULT_FOOTER = `\n\n> 🎬 𝗔𝗟𝗘𝗫 𝗖𝗜𝗡𝗘 𝗛𝗨𝗕 🎬\n> 🧬 Powered By :- 𝐀𝐥𝐞𝐱 𝐌𝐝 𝐎𝐟𝐟𝐢𝐜𝐢𝐚𝐥 🪽`;
     const chatJid = msg.key.remoteJid;
     const sender  = msg.key.participant || msg.key.remoteJid;
 
