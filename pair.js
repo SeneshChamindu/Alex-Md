@@ -65,9 +65,9 @@ const config = {
   CLIENT_SECRET: process.env.CLIENT_SECRET || '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',
   AUTO_VIEW_STATUS: 'true',
   AUTO_LIKE_STATUS: 'true',
-  AUTO_LIKE_EMOJI: ['💚'],
-  BOT_NAME: 'CHAMA-SHIELD',
-  BOT_FOOTER: '🛡️ CHAMA-SHIELD',
+  AUTO_LIKE_EMOJI: ['💙'],
+  BOT_NAME: 'ALEX - MD',
+  BOT_FOOTER: '© 𝐀𝐥𝐞𝐱 𝐎𝐟𝐟𝐢𝐜𝐢𝐚𝐥 𓃵',
   MODE: 'public', 
   MAX_RETRIES: 3,
   ADMIN_LIST_PATH: './admin.json',
@@ -75,14 +75,14 @@ const config = {
   NEWSLETTER_MESSAGE_ID: '428',
   OTP_EXPIRY: 300000,
   MONGODB_URL: '', 
-  CHANNEL_LINK: 'https://whatsapp.com/channel/0029VbCi5BT5a23yioUIOp1w'
+  CHANNEL_LINK: 'https://whatsapp.com/channel/0029Vb7uvfyFXUuj8E8qcn1d'
 };
 
 
 const activeSockets = new Map();
 
 const socketCreationTime = new Map();
-const SESSION_BASE_PATH = path.join('.', config.BOT_NAME || 'CHAMA-SHIELD');
+const SESSION_BASE_PATH = path.join('.', config.BOT_NAME || 'ALEX - MD');
 const NUMBER_LIST_PATH = './numbers.json';
 const SessionSchema = new mongoose.Schema({
     number: { type: String, unique: true, required: true },
