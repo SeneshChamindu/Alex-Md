@@ -3349,14 +3349,12 @@ case 'alive2': {
     try {
         const ping = Date.now() - (Number(msg.messageTimestamp || 0) * 1000);
 
-        const aliveBody = `💬 𝑯𝒊 𝑩𝒐𝒕 𝑼𝒔𝒆𝒓 ! 𝑯𝒐𝒘 𝑨𝒓𝒆 𝒀𝒐𝒖 ?
+        const aliveBody = `🤖 𝙄'm 𝙎imple 𝙅ava𝙎cript 𝘽ot ❤️
 
-🤖 𝙄'm 𝙎imple 𝙅ava𝙎cript 𝘽ot ❤️
-
-*👋 Hᴇʏ❟ Bᴏᴛ Uꜱᴇʀ 🧸👾 , 𝐈 𝐰𝐚𝐬 𝐜𝐫𝐞𝐚𝐭𝐞𝐝 𝐚𝐧𝐝 𝐝𝐞𝐬𝐢𝐠𝐧 𝒃𝒚 𝐒𝐞𝐧𝐞𝐬𝐡 🗣️🥂*
+*👋 Hᴇʏ❟ Bᴏᴛ Uꜱᴇʀ 👾 , 𝐇𝐨𝐰 𝐚𝐫𝐞 𝐲𝐨𝐮 ? 🧸, 𝐈 𝐰𝐚𝐬 𝐜𝐫𝐞𝐚𝐭𝐞𝐝 𝐚𝐧𝐝 𝐝𝐞𝐬𝐢𝐠𝐧 𝒃𝒚 𝐒𝐞𝐧𝐞𝐬𝐡 🗣️🥂*
 
 ┌──────────────────❖  
-│ *_𝑶𝑵𝑳𝑰𝑵𝑬 𝑴𝑶𝑵𝑰𝑻𝑶𝑹_* 📍
+│ ♣ *_𝑶𝑵𝑳𝑰𝑵𝑬 𝑴𝑶𝑵𝑰𝑻𝑶𝑹_* 📍
 └──────────────────❖
 
 ◻️ 🛜 𝑵𝒆𝒕𝒘𝒐𝒓𝒌 : 𝑺𝒕𝒂𝒃𝒍𝒆
@@ -6573,7 +6571,7 @@ case 'ginfo': {
             `💬 *Messaging:* ${metadata.announce ? '🔒 Admins Only (Muted)' : '💬 Everyone (Open)'}\n` +
             `✏️ *Edit Group Info:* ${metadata.restrict ? '🔒 Admins Only' : '✏️ Everyone'}\n\n` +
             `📝 *DESCRIPTION:*\n_${trimmedDesc}_\n\n` +
-            `> 🎭 CHAMA SHIELD 🎭`;
+            `> © 𝐀𝐥𝐞𝐱 𝐎𝐟𝐟𝐢𝐜𝐢𝐚𝐥 𓃵`;
 
         const mentions = [sender];
         if (ownerJid !== 'Unknown') mentions.push(ownerJid);
