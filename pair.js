@@ -1859,8 +1859,7 @@ case 'fv': {
         }, { quoted: msg });
     }
     break;
-}
-
+      }
 case 'cid':
 case 'channelid':
 case 'channeljid': {
