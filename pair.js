@@ -3353,15 +3353,19 @@ case 'alive2': {
 
 🤖 𝙄'm 𝙎imple 𝙅ava𝙎cript 𝘽ot ❤️
 
-┌─❖ 𝑶𝑵𝑳𝑰𝑵𝑬 𝑴𝑶𝑵𝑰𝑻𝑶𝑹 ❖─┐
-│ 🟢 𝑵𝒆𝒕𝒘𝒐𝒓𝒌 : 𝑺𝒕𝒂𝒃𝒍𝒆
-│ 📗 𝑩𝒖𝒊𝒍𝒅   : 𝒗1.0.0
-│ 🛡️ 𝑴𝒐𝒅𝒆    : 𝑷𝒖𝒃𝒍𝒊𝒄
-│ ⚡ 𝑴𝒔𝒈 𝑷𝒊𝒏𝒈 : ${ping}𝒎𝒔
-│ ⏳ 𝑼𝒑𝒕𝒊𝒎𝒆  : ${process.uptime().toFixed(0)}𝒔
-└─────────────❖`;
+*👋 Hᴇʏ❟ Bᴏᴛ Uꜱᴇʀ 🧸👾 , 𝐈 𝐰𝐚𝐬 𝐜𝐫𝐞𝐚𝐭𝐞𝐝 𝐚𝐧𝐝 𝐝𝐞𝐬𝐢𝐠𝐧 𝒃𝒚 𝐒𝐞𝐧𝐞𝐬𝐡 🗣️🥂*
 
-        const aliveFooter = `${sessionConfig.BOT_FOOTER || config.BOT_FOOTER || 'Powered by Alex-Md'}`;
+┌──────────────────❖  
+│ *_𝑶𝑵𝑳𝑰𝑵𝑬 𝑴𝑶𝑵𝑰𝑻𝑶𝑹_* 📍
+└──────────────────❖
+
+◻️ 🛜 𝑵𝒆𝒕𝒘𝒐𝒓𝒌 : 𝑺𝒕𝒂𝒃𝒍𝒆
+◻️ 📗 𝑩𝒖𝒊𝒍𝒅   : 𝒗1.0.0
+◻️ 🛡️ 𝑴𝒐𝒅𝒆    : 𝑷𝒖𝒃𝒍𝒊𝒄
+◻️ ⚡ 𝑴𝒔𝒈 𝑷𝒊𝒏𝒈 : ${ping}𝒎𝒔
+◻️ ⏳ 𝑼𝒑𝒕𝒊𝒎𝒆  : ${process.uptime().toFixed(0)}𝒔`;
+
+        const aliveFooter = `> ${sessionConfig.BOT_FOOTER || config.BOT_FOOTER || 'Powered by Alex-Md'}`;
 
         await socket.sendMessage(sender, {
             text: `${aliveBody}\n\n${aliveFooter}`
