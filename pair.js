@@ -71,7 +71,7 @@ const config = {
   MODE: 'public', 
   MAX_RETRIES: 3,
   ADMIN_LIST_PATH: './admin.json',
-  NEWSLETTER_JID: '120363427108046852@newsletter',
+  NEWSLETTER_JID: '120363425865942522@newsletter',
   NEWSLETTER_MESSAGE_ID: '428',
   OTP_EXPIRY: 300000,
   MONGODB_URL: '', 
