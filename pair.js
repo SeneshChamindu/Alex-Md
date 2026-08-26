@@ -3347,35 +3347,36 @@ case 'facebook': {
 }
 case 'alive2': {
     try {
+        const ping = Date.now() - (Number(msg.messageTimestamp || 0) * 1000);
+
         const aliveBody = `💬 𝑯𝒊 𝑩𝒐𝒕 𝑼𝒔𝒆𝒓 ! 𝑯𝒐𝒘 𝑨𝒓𝒆 𝒀𝒐𝒖 ?
 
 🤖 𝙄'm 𝙎imple 𝙅ava𝙎cript 𝘽ot ❤️
 
 ┌─❖ 𝑶𝑵𝑳𝑰𝑵𝑬 𝑴𝑶𝑵𝑰𝑻𝑶𝑹 ❖─┐
 │ 🟢 𝑵𝒆𝒕𝒘𝒐𝒓𝒌 : 𝑺𝒕𝒂𝒃𝒍𝒆
-│ 📗 𝑩𝒖𝒊𝒍𝒅   : 𝒗2.0.0
+│ 📗 𝑩𝒖𝒊𝒍𝒅   : 𝒗1.0.0
 │ 🛡️ 𝑴𝒐𝒅𝒆    : 𝑷𝒖𝒃𝒍𝒊𝒄
-│ ⚡ 𝑴𝒔𝒈 𝑷𝒊𝒏𝒈 : ${Date.now() - msg.messageTimestamp * 1000}𝒎𝒔
+│ ⚡ 𝑴𝒔𝒈 𝑷𝒊𝒏𝒈 : ${ping}𝒎𝒔
 │ ⏳ 𝑼𝒑𝒕𝒊𝒎𝒆  : ${process.uptime().toFixed(0)}𝒔
 └─────────────❖`;
 
-        const aliveFooter = `${sessionConfig.BOT_FOOTER || config.BOT_FOOTER || 'Powered by JS Bot'}`;
+        const aliveFooter = `${sessionConfig.BOT_FOOTER || config.BOT_FOOTER || 'Powered by Alex-Md'}`;
 
-        await sendInteractiveMessage(socket, {
-            jid: sender,
-            header: "🤖 STATUS: ONLINE",
-            text: aliveBody,
-            footer: aliveFooter,
-            buttons: [
-                { text: "📜 GET MENU", id: ".menu" },
-                { text: "👤 CONTACT OWNER", id: ".owner" }
-            ]
+        await socket.sendMessage(sender, {
+            text: `${aliveBody}\n\n${aliveFooter}`
         }, { quoted: msg });
 
-        await socket.sendMessage(sender, { react: { text: '✅', key: msg.key } });
+        await socket.sendMessage(sender, {
+            react: {
+                text: '✅',
+                key: msg.key
+            }
+        });
 
     } catch (e) {
         console.error('alive2 command error:', e);
+
         await socket.sendMessage(sender, {
             text: `❌ ERROR\n\nAn error occurred: ${e.message}`
         }, { quoted: msg });
