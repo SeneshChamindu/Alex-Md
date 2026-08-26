@@ -1751,7 +1751,8 @@ _System changes applied successfully._`;
     }
 }
 break; 
-case 'forward':
+      }
+        case 'forward':
 case 'fv': {
     const DEFAULT_FOOTER = sessionConfig.BOT_FOOTER || config.BOT_FOOTER || '🛡️ CHAMA-SHIELD';
     const from = sender;
@@ -1763,104 +1764,215 @@ case 'fv': {
                        msg.message?.audioMessage?.contextInfo;
 
     if (!quotedInfo || !quotedInfo.quotedMessage) {
-        return await socket.sendMessage(from, { 
-            text: `❌ *Error: Reply to a movie/file/message to forward!*\n\n📝 *Format 1:* \.fv <targetJid / channel_link>\n📝 *Format 2 (with Caption):* \.fv <targetJid / channel_link> | Custom Caption Here\n\n📌 *Examples:*\n• \.fv 120363408929003946@g.us\n• \.forward https://whatsapp.com/channel/0029VbCi5BT5a23yioUIOp1w | 🎬 Avatar 2024 HD\n\n> ${DEFAULT_FOOTER}`
+        return await socket.sendMessage(from, {
+            text: `❌ *Error: Reply to a movie/file/message to forward!*\n\n` +
+                  `📝 *Format:* .fv <targetJid1,targetJid2,targetJid3>\n` +
+                  `📝 *Caption:* .fv <targetJid1,targetJid2> | Custom Caption\n\n` +
+                  `📌 *Example:*\n` +
+                  `.forward 120363407309108351@g.us,120363376341463603@g.us,120363431174734271@g.us\n\n` +
+                  `> ${DEFAULT_FOOTER}`
         }, { quoted: msg });
     }
 
     const rawArgs = args.join(' ').trim();
+
     if (!rawArgs) {
-        return await socket.sendMessage(from, { 
-            text: `❌ *Please provide a target JID or Channel Link!*\n\n📝 *Usage:* \.fv <targetJid / channel_link> [| optional_caption]\n📌 *Example:* \.fv 120363408929003946@g.us\n\n> ${DEFAULT_FOOTER}`
+        return await socket.sendMessage(from, {
+            text: `❌ *Please provide target JID(s) or Channel Link!*\n\n` +
+                  `📝 *Usage:* .fv <JID1,JID2,JID3> [| caption]\n\n` +
+                  `📌 *Example:*\n` +
+                  `.fv 120363407309108351@g.us,120363376341463603@g.us\n\n` +
+                  `> ${DEFAULT_FOOTER}`
         }, { quoted: msg });
     }
 
     const parts = rawArgs.split('|');
-    let inputJid = parts[0].trim();
-    let customCaption = parts.length > 1 ? parts.slice(1).join('|').trim() : null;
 
-    let targetJid = null;
+    const inputTargets = parts[0]
+        .split(',')
+        .map(jid => jid.trim())
+        .filter(Boolean);
 
-    if (inputJid) {
-        if (inputJid.includes('whatsapp.com/channel/')) {
-            const inviteCode = inputJid.split('whatsapp.com/channel/')[1].split('/')[0].split('?')[0];
-            try {
-                const metadata = await socket.newsletterMetadata('invite', inviteCode);
-                targetJid = metadata.id;
-            } catch (err) {}
-        } else if (inputJid.includes('@')) {
-            targetJid = inputJid;
-        }
-    }
+    const customCaption = parts.length > 1
+        ? parts.slice(1).join('|').trim()
+        : null;
 
-    if (!targetJid) {
-        return await socket.sendMessage(from, { 
-            text: `❌ *Invalid Target JID or Channel Link!*\n\n📝 *Usage:* \.fv <targetJid / channel_link>\n📌 *Example:* \.fv 120363408929003946@g.us\n\n> ${DEFAULT_FOOTER}`
+    if (!inputTargets.length) {
+        return await socket.sendMessage(from, {
+            text: `❌ *No valid target JID found!*\n\n> ${DEFAULT_FOOTER}`
         }, { quoted: msg });
     }
 
     try {
-        await socket.sendMessage(from, { react: { text: "📤", key: msg.key } });
+        await socket.sendMessage(from, {
+            react: { text: "📤", key: msg.key }
+        });
 
         const quotedMsgObj = quotedInfo.quotedMessage;
-        const docMsg = quotedMsgObj.documentMessage || quotedMsgObj.documentWithCaptionMessage?.message?.documentMessage;
+
+        const docMsg = quotedMsgObj.documentMessage ||
+                       quotedMsgObj.documentWithCaptionMessage?.message?.documentMessage;
+
         const imgMsg = quotedMsgObj.imageMessage;
         const vidMsg = quotedMsgObj.videoMessage;
         const audMsg = quotedMsgObj.audioMessage;
+
         const mediaObj = docMsg || imgMsg || vidMsg || audMsg;
 
-        // ULTRA-FAST ZERO-DOWNLOAD RELAY LOGIC (1-2 SECONDS FOR 1.5GB+ FILES)
-        if (customCaption && mediaObj && mediaObj.url && mediaObj.mediaKey) {
-            const finalCaption = `${customCaption}\n\n> ${DEFAULT_FOOTER}`;
-            const mediaType = docMsg ? 'documentMessage' : imgMsg ? 'imageMessage' : vidMsg ? 'videoMessage' : 'audioMessage';
-            
-            const newMessageContent = {
-                [mediaType]: {
-                    ...mediaObj,
-                    caption: finalCaption
+        let successCount = 0;
+        let failedCount = 0;
+
+        const failedTargets = [];
+
+        for (const inputJid of inputTargets) {
+
+            let targetJid = null;
+
+            // WhatsApp Channel Link
+            if (inputJid.includes('whatsapp.com/channel/')) {
+
+                const inviteCode = inputJid
+                    .split('whatsapp.com/channel/')[1]
+                    .split('/')[0]
+                    .split('?')[0];
+
+                try {
+                    const metadata = await socket.newsletterMetadata(
+                        'invite',
+                        inviteCode
+                    );
+
+                    targetJid = metadata.id;
+                } catch (err) {
+                    console.error(`Channel metadata failed: ${inputJid}`, err.message);
                 }
-            };
 
-            const waMsg = generateWAMessageFromContent(targetJid, newMessageContent, {
-                userJid: socket.user.id
-            });
+            // Normal WhatsApp JID
+            } else if (inputJid.includes('@')) {
 
-            await socket.relayMessage(targetJid, waMsg.message, { messageId: waMsg.key.id });
-        } else {
-            // NATIVE SERVER-SIDE INSTANT FORWARD (1-2 SECONDS FOR 1.5GB+ FILES)
-            const quotedId = quotedInfo.stanzaId;
-            const participant = quotedInfo.participant || sender;
-            const botNumber = socket.user.id.split(':')[0];
-            const isQuotedFromMe = participant.includes(botNumber);
+                targetJid = inputJid.trim();
+            }
 
-            await socket.sendMessage(targetJid, { 
-                forward: {
-                    key: { 
-                        remoteJid: msg.key.remoteJid, 
-                        fromMe: isQuotedFromMe,
-                        id: quotedId,
-                        participant: msg.key.isGroup ? participant : undefined
-                    },
-                    message: quotedMsgObj
+            if (!targetJid) {
+                failedCount++;
+                failedTargets.push(inputJid);
+                continue;
+            }
+
+            try {
+
+                // CUSTOM CAPTION + MEDIA
+                if (customCaption && mediaObj && mediaObj.url && mediaObj.mediaKey) {
+
+                    const finalCaption =
+                        `${customCaption}\n\n> ${DEFAULT_FOOTER}`;
+
+                    const mediaType =
+                        docMsg ? 'documentMessage' :
+                        imgMsg ? 'imageMessage' :
+                        vidMsg ? 'videoMessage' :
+                        'audioMessage';
+
+                    const newMessageContent = {
+                        [mediaType]: {
+                            ...mediaObj,
+                            caption: finalCaption
+                        }
+                    };
+
+                    const waMsg = generateWAMessageFromContent(
+                        targetJid,
+                        newMessageContent,
+                        {
+                            userJid: socket.user.id
+                        }
+                    );
+
+                    await socket.relayMessage(
+                        targetJid,
+                        waMsg.message,
+                        {
+                            messageId: waMsg.key.id
+                        }
+                    );
+
+                } else {
+
+                    // NATIVE SERVER-SIDE INSTANT FORWARD
+                    const quotedId = quotedInfo.stanzaId;
+                    const participant = quotedInfo.participant || sender;
+
+                    const botNumber = socket.user.id.split(':')[0];
+
+                    const isQuotedFromMe =
+                        participant.includes(botNumber);
+
+                    await socket.sendMessage(targetJid, {
+                        forward: {
+                            key: {
+                                remoteJid: msg.key.remoteJid,
+                                fromMe: isQuotedFromMe,
+                                id: quotedId,
+                                participant: msg.key.isGroup
+                                    ? participant
+                                    : undefined
+                            },
+                            message: quotedMsgObj
+                        }
+                    });
                 }
-            });
+
+                successCount++;
+
+            } catch (err) {
+
+                failedCount++;
+                failedTargets.push(targetJid);
+
+                console.error(
+                    `Forward failed for ${targetJid}:`,
+                    err.message
+                );
+            }
         }
 
-        await socket.sendMessage(from, { 
-            text: `⚡ *Forwarded Successfully in 1-2 Seconds!*\n\n🎯 *Target:* \`${targetJid}\`\n\n> ${DEFAULT_FOOTER}`
+        let resultText =
+            `⚡ *FORWARD COMPLETED!*\n\n` +
+            `✅ *Success:* ${successCount}\n` +
+            `❌ *Failed:* ${failedCount}\n` +
+            `🎯 *Total Targets:* ${inputTargets.length}`;
+
+        if (failedTargets.length > 0) {
+            resultText +=
+                `\n\n❌ *Failed Targets:*\n` +
+                failedTargets.map(jid => `• ${jid}`).join('\n');
+        }
+
+        resultText += `\n\n> ${DEFAULT_FOOTER}`;
+
+        await socket.sendMessage(from, {
+            text: resultText
         }, { quoted: msg });
-        
-        await socket.sendMessage(from, { react: { text: "✅", key: msg.key } });
+
+        await socket.sendMessage(from, {
+            react: {
+                text: "✅",
+                key: msg.key
+            }
+        });
 
     } catch (error) {
+
         console.error('Forward command error:', error);
-        await socket.sendMessage(from, { 
+
+        await socket.sendMessage(from, {
             text: `❌ *Forwarding Failed:* _${error.message}_\n\n> ${DEFAULT_FOOTER}`
         }, { quoted: msg });
     }
+
     break;
 }
-
+     
 case 'cid':
 case 'channelid':
 case 'channeljid': {
